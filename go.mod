@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	cloud.google.com/go/compute v1.6.1 // indirect
+	github.com/exsocial/goperspective v0.0.0-20211005174320-4fc4cfd36768 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.7.7 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
