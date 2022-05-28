@@ -1,0 +1,40 @@
+--
+
+Overview: 
+    - Stream messages in bulk into scoring service
+    - Scoring service generates data on text
+    - Data is fetched from storage using ETL 
+    - Kubernetes to scale containered - serverless approach
+
+
+Message stream service
+    - Redis streams
+    - Triggers event from a file upload
+    - Parses individual lines from file (Feed data)
+
+Scoring service
+    - Perspective scores service
+    - Triggers database creation to Data lake
+
+Analytics service
+    - Queries built to develop analytics
+
+Project scoped using Kube/Docker to containerize and scale services
+
+
+Discovery Phase: 
+    - Event driven
+    - When file upload occurs
+    - Trigger scoring service
+    - Store scores in Data Lake
+
+Project Phase: 
+    - File upload begins
+    - Parse/count sum of data
+    - Send events from message broker on the length of the data
+    - Take snapshots periodically of events 
+    - Create event chain
+    - Score data
+    - Send data to Data lake
+    - Generate second set of events on load
+    - Run 3 types of analytical queries (Micro Batching) 
