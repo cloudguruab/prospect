@@ -1,28 +1,31 @@
 package models
 
 import (
-  "gorm.io/driver/postgres"
-  "gorm.io/gorm"
-  
-  "fmt"
-  "os"
-)
+    _ "github.com/jinzhu/gorm/dialects/postgres"
+    "github.com/jinzhu/gorm"
+    "github.com/joho/godotenv"
 
+    "os"
+    "fmt"
+)
 
 var DB *gorm.DB
 
 func ConnectDB() {
-    host := os.Getenv("host")
-    user := os.Getenv("user")
-    password := os.Getenv("password")
-    dbname := os.Getenv("dbname")
-    port := os.Getenv("port")
-    sslmode := os.Getenv("sslmode")
-    dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=%s", host, user, password, dbname, port, sslmode)
+    godotenv.Load()
+    username := os.Getenv("db_user")
+    password := os.Getenv("db_pass")
+    dbName := os.Getenv("db_name")
+    dbHost := os.Getenv("db_host")
 
-    database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-    
+
+    dbUri := fmt.Sprintf("host=%s user=%s dbname=%s sslmode=disable password=%s", dbHost, username, dbName, password) //Build connection string
+    fmt.Println(dbUri)
+
+    database, err := gorm.Open("postgres", dbUri)
+
     if err != nil {
+        fmt.Println(err)
         panic("Failed to connect to database!")
     }
 
