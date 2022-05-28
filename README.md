@@ -29,3 +29,5 @@ touch .env
 ```
 go run main.go
 ```
+
+- Installing psql/postgres, starting service, creating user/role 
