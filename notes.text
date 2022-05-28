@@ -1,4 +1,5 @@
 --
+Project: Data engineering, Event sourcing, RESTful API service, Containerized, Kubernetes cluster management, NLP AI
 
 Overview: 
     - Stream messages in bulk into scoring service
