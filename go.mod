@@ -2,6 +2,8 @@ module github.com/cloudguruab/prospect
 
 go 1.18
 
+require cloud.google.com/go/functions v1.3.0
+
 require (
 	cloud.google.com/go/compute v1.6.1 // indirect
 	github.com/exsocial/goperspective v0.0.0-20211005174320-4fc4cfd36768 // indirect
