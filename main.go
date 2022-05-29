@@ -43,6 +43,9 @@ type GCSEvent struct {
         ResourceState string `json:"resourceState"`
 }
 
+func main() {
+    TriggerGCS()
+}
 
 func TriggerGCS(ctx context.Context, e common.GCSEvent) error {
         meta, err := metadata.FromContext(ctx)
