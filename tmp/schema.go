@@ -1,4 +1,4 @@
-package models
+package tmp
 
 type Scores struct {
   ID uint `json:"id" gorm:"primary_key"`

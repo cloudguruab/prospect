@@ -1,4 +1,4 @@
-package models
+package tmp
 
 import (
     _ "github.com/jinzhu/gorm/dialects/postgres"
