@@ -1,4 +1,6 @@
 5/28 - Read from cloud store, then hook up controller to organzie routes, add file trigger to newfile-service, add parsing to new file service, and run perspective api
+6/3 - Pushed new/updt cloud funcs in gcp, test what logs look like so you know what to load into controller object, discover on whether we can call invoke cf using api calls externally and how to do it, also setup auth, and api call to parse file off api call locally to code too (Double edge sword), then what we will begin doing is triggering three funcs: (1) gcs upload metadata func, (2) pulling file obj down into tmp storage, (3) invoking perspective, (4) saving scores to db, (5) using retool to display scores ---- what the workflow will look like for now though: 1, (2) parsing file contents
+---- what the current workflow will do, is ; later on between (1) - (3) we will fragment pieces of file to be fed into perspective on (3)
 --
 Project: Data engineering, Event sourcing, RESTful API service, Containerized, Kubernetes cluster management, NLP AI
 
