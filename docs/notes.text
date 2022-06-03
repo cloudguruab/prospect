@@ -1,3 +1,4 @@
+5/28 - Read from cloud store, then hook up controller to organzie routes, add file trigger to newfile-service, add parsing to new file service, and run perspective api
 --
 Project: Data engineering, Event sourcing, RESTful API service, Containerized, Kubernetes cluster management, NLP AI
 
