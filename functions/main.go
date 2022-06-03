@@ -61,3 +61,16 @@ func TriggerGCS(ctx context.Context, e GCSEvent) error {
         return nil
 }
 
+func TriggerFileParsification(ctx context.Context, e GCSEvent) error {
+    meta, err := metadata.FromContext(ctx)
+
+    // invoke call to controller item
+    
+    if err != nil {
+        return fmt.Errorf("metadata.FromContext: %v", err)
+    }
+
+    log.Printf("Testing 123 Test Meta: %v\n", meta)
+
+    return nil
+}
