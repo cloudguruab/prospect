@@ -41,7 +41,7 @@ func Upload(c *gin.Context) {
         // we can either invoke cloud function from event change in cloud store
         // or we can invoke parsification directly from api call using controller
         // can we invoke cloud function from api call? - yes but context needed.
-        c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("file specification valid %s", *params)})
+        c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("file specification valid %s", params)})
     } else {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
     }
