@@ -17,9 +17,8 @@ func check(e error) {
 
 func ControllerParse() {
 
-	// Perhaps the most basic file reading task is
-	// slurping a file's entire contents into memory.
-	dat, err := os.ReadFile("/tmp/dat")
+    // read file contents into memory
+	dat, err := os.ReadFile(os.Getenv("TEMP_DIR")
 	check(err)
 	fmt.Print(string(dat))
 
