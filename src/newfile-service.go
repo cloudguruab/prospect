@@ -8,6 +8,8 @@ import (
     "github.com/gin-gonic/gin"
 )
 
+// new engine instance for groupings: r := gin.Default()
+
 type Args struct {
     file bool `binding:"required"`
 }
