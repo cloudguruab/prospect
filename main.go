@@ -10,6 +10,8 @@ import (
 // add authentication
 // group routes
 // add cloud function triggers
+// add data layer
+// patch readme for docs
 // setup CI 
 // add Testcases
 // add logging
