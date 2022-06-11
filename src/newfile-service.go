@@ -3,48 +3,66 @@ package src
 import (
     "net/http"
     "fmt"
-
-    "github.com/gin-gonic/gin/binding"
+    "os"
+    "io"
+//    "io/ioutil"
+//    "github.com/gin-gonic/gin/binding"
     "github.com/gin-gonic/gin"
 )
 
-// new engine instance for groupings: r := gin.Default()
-
-type Args struct {
-    file bool `binding:"required"`
-}
-
-type function_triggers struct {
-    isNew bool
-    isNot bool
-}
-
-func (s *function_triggers) exec() int {
-    exe := true 
-
-    if s.isNew == exe {
-        return 0
-    } else if s.isNot != exe {
-        return 1
+func check(e error) {
+    if e != nil {
+        panic(e)
     }
+}
+
+func IsDirEmpty(name string) (bool, error) {
+     f, err := os.Open(name)
+     
+     if err != nil {
+         return false, err
+     }     
+
+     defer f.Close()
+
+     // read in ONLY one file
+     _, err = f.Readdir(1)
+
+     // and if the file is EOF... well, the dir is empty.
+     if err == io.EOF {
+        return true, nil
+     }
+
+     return false, err
+}
+
+func Parse() string {
+    // files, err := ioutil.ReadDir("./local/") <- memory addr
+    dat, err := os.ReadFile("./local/payload.txt")
+    check(err)
     
-    return -1
+    return string(dat)
 }
 
 // write method for triggering scores
 // perspective api res loaded into
 // tmp schema.go and saved to db
-
 func Upload(c *gin.Context) {
-    var params Args
-
-    if err := c.ShouldBindWith(&params, binding.Query); err == nil {
-        // trigger cloud function || trigger controller node
-        // we can either invoke cloud function from event change in cloud store
-        // or we can invoke parsification directly from api call using controller
-        // can we invoke cloud function from api call? - yes but context needed.
-        c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("file specification valid %s", params)})
-    } else {
-        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+    ok, err := IsDirEmpty("./local/")
+    
+    if err != nil {
+        fmt.Println(err)
+        c.JSON(http.StatusBadRequest, gin.H{"response": err.Error()})
     }
+    
+    if ok == false {
+        c.JSON(http.StatusOK, gin.H{"response": string(Parse())})
+    } else { 
+        c.JSON(http.StatusOK, gin.H{"response": "Directory empty.."})
+    }
+
+    // trigger cloud function || trigger controller node
+    // we can either invoke cloud function from event change in cloud store
+    // or we can invoke parsification directly from api call using controller
+    // can we invoke cloud function from api call? - yes but context needed
 }

@@ -11,8 +11,6 @@ func main() {
     r := gin.Default()
     tmp.ConnectDB()
 
-    // start grouping routes into gateway
-    //
     r.GET("/api/v1/prospect/", src.Welcome)
     r.POST("/api/v1/prospect/upload", src.Upload)
 
