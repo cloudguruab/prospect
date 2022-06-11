@@ -6,7 +6,15 @@ import (
   "github.com/cloudguruab/prospect/src"
 )
 
-
+// todo:
+// add authentication
+// group routes
+// add cloud function triggers
+// setup CI 
+// add Testcases
+// add logging
+// update newfile-service route
+// add routes for uploading files
 func main() {
     r := gin.Default()
     tmp.ConnectDB()
