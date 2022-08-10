@@ -32,3 +32,8 @@ func ConnectDB() {
 
 	DB = database
 }
+
+// login auth functions
+func isUserValid(username, password string) bool {
+	return false
+}
