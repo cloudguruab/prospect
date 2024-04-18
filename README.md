@@ -5,13 +5,13 @@ NLP service used to score content in aim to support content moderation.
 ### Example output
 
 ```
-Fuck sally joe she's a bitch
+This is a bad word
 SEVERE_TOXICITY 0.89362836
 THREAT 0.3614778
 TOXICITY 0.9646382
 IDENTITY_ATTACK 0.69617623
 
-I want to bomb the building 
+This is a threat
 THREAT 0.98462415
 SEVERE_TOXICITY 0.80347574
 TOXICITY 0.6221407
